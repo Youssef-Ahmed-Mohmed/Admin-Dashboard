@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { ColorModeContext, useMode } from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -21,15 +21,16 @@ const Calendar = lazy(() => import('./scenes/calendar'));
 
 function App() {
   const [theme, colorMode] = useMode();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Sidebar />
+          <Sidebar mobileOpen={mobileNavOpen} onMobileClose={() => setMobileNavOpen(false)} />
           <main className="content">
-            <Topbar />
+            <Topbar onMenuClick={() => setMobileNavOpen(true)} />
             <Suspense fallback={<Box sx={{ display: 'grid', placeItems: 'center', minHeight: '50vh' }}><CircularProgress size={28} /></Box>}>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
@@ -46,7 +47,7 @@ function App() {
               </Routes>
             </Suspense>
             <Box component="footer" sx={{ mt: 'auto', px: { xs: 2, md: 3 }, py: 2, borderTop: (currentTheme) => `1px solid ${currentTheme.palette.divider}`, textAlign: 'center' }}>
-              <Typography variant="caption" color="text.secondary" letterSpacing={0.5}>© YOUUSEF 2026</Typography>
+              <Typography variant="caption" color="text.secondary" letterSpacing={0.5}>YOUUSEF 2026</Typography>
             </Box>
           </main>
         </div>

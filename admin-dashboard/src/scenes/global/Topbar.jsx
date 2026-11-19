@@ -8,8 +8,9 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SearchIcon from '@mui/icons-material/Search';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
-const Topbar = () => {
+const Topbar = ({ onMenuClick }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const navigate = useNavigate();
@@ -38,18 +39,25 @@ const Topbar = () => {
       component="header"
       sx={{
         height: 56,
-        px: 2,
+        flexShrink: 0,
+        px: { xs: 0.75, sm: 1.5, md: 2 },
+        gap: { xs: 0.5, sm: 1 },
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         borderBottom: `1px solid ${theme.palette.divider}`,
       }}
     >
+      <IconButton size="small" aria-label="Open navigation" onClick={onMenuClick} sx={{ display: { xs: 'inline-flex', md: 'none' }, flexShrink: 0 }}>
+        <MenuOutlinedIcon fontSize="small" />
+      </IconButton>
       <Box
         component="form"
         onSubmit={handleSearch}
         sx={{
-          width: { xs: 180, sm: 260 },
+          width: { xs: '34vw', sm: 220, md: 260 },
+          minWidth: 0,
+          flexShrink: 1,
           height: 30,
           px: 1,
           display: 'flex',
@@ -62,13 +70,13 @@ const Topbar = () => {
         <InputBase placeholder="Search pages" value={search} onChange={(event) => setSearch(event.target.value)} inputProps={{ 'aria-label': 'Search pages' }} sx={{ flex: 1, fontSize: 12 }} />
         <IconButton type="submit" size="small" aria-label="Search"><SearchIcon sx={{ fontSize: 17 }} /></IconButton>
       </Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-        <IconButton size="small" aria-label="Toggle color mode" onClick={colorMode.toggleColorMode}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0, sm: 0.25 }, flexShrink: 0 }}>
+        <IconButton size="small" aria-label="Toggle color mode" onClick={colorMode.toggleColorMode} sx={{ p: { xs: 0.65, sm: 1 } }}>
           {theme.palette.mode === 'dark' ? <DarkModeOutlinedIcon fontSize="small" /> : <LightModeOutlinedIcon fontSize="small" />}
         </IconButton>
-        <IconButton size="small" aria-label="Notifications" onClick={(event) => setNotificationAnchor(event.currentTarget)}><NotificationsOutlinedIcon fontSize="small" /></IconButton>
-        <IconButton size="small" aria-label="Profile settings" onClick={() => navigate('/form')}><SettingsOutlinedIcon fontSize="small" /></IconButton>
-        <IconButton size="small" aria-label="Account menu" onClick={(event) => setAccountAnchor(event.currentTarget)}><PersonOutlinedIcon fontSize="small" /></IconButton>
+        <IconButton size="small" aria-label="Notifications" onClick={(event) => setNotificationAnchor(event.currentTarget)} sx={{ p: { xs: 0.65, sm: 1 } }}><NotificationsOutlinedIcon fontSize="small" /></IconButton>
+        <IconButton size="small" aria-label="Profile settings" onClick={() => navigate('/form')} sx={{ p: { xs: 0.65, sm: 1 } }}><SettingsOutlinedIcon fontSize="small" /></IconButton>
+        <IconButton size="small" aria-label="Account menu" onClick={(event) => setAccountAnchor(event.currentTarget)} sx={{ p: { xs: 0.65, sm: 1 } }}><PersonOutlinedIcon fontSize="small" /></IconButton>
       </Box>
       <Popover
         open={Boolean(notificationAnchor)}
