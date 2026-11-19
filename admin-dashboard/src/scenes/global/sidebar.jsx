@@ -49,8 +49,16 @@ const Sidebar = () => {
         transition: 'width 220ms ease, min-width 220ms ease',
       }}
     >
-      <Box sx={{ height: 56, px: collapsed ? 1 : 1.75, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        {!collapsed && <Typography variant="h6" fontWeight={700} letterSpacing={0.5}>ADMINIS</Typography>}
+      <Box sx={{ height: 64, px: collapsed ? 1 : 1.75, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 0 }}>
+          <Box component="img" src="/brand-mark.svg" alt="Adminbox" sx={{ width: 34, height: 34, flexShrink: 0, borderRadius: 1 }} />
+          {!collapsed && (
+            <Box sx={{ minWidth: 0 }}>
+              <Typography variant="subtitle1" fontWeight={800} letterSpacing={0.5} lineHeight={1.1}>ADMINBOX</Typography>
+              <Typography variant="caption" color="text.secondary" lineHeight={1.1}>ADMIN WORKSPACE</Typography>
+            </Box>
+          )}
+        </Box>
         <IconButton size="small" aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onClick={() => setCollapsed((value) => !value)}>
           <MenuOutlinedIcon fontSize="small" />
         </IconButton>
