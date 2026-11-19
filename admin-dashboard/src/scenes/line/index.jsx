@@ -28,7 +28,7 @@ const LineChartPage = () => {
             {seriesNames.map((name, index) => <Stack key={name} direction="row" alignItems="center" spacing={0.75}><Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: chartColors[index] }} /><Typography variant="caption">{name}</Typography></Stack>)}
           </Stack>
         </Stack>
-        <Box sx={{ width: '100%', height: { xs: 330, md: 440 }, mt: 2 }}>
+        <Box sx={{ width: '100%', height: { xs: 260, sm: 340, md: 440 }, minWidth: 0, mt: 2 }}>
           <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} width="100%" height="100%" preserveAspectRatio="none" role="img" aria-label="Weekly visitors by channel line chart">
             {[0, 80, 160, 240, 320].map((value) => {
               const y = margins.top + (1 - value / 320) * (chartHeight - margins.top - margins.bottom);

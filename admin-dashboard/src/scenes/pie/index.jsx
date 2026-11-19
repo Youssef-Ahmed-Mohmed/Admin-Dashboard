@@ -21,7 +21,7 @@ const PieChartPage = () => {
         <Card variant="outlined" sx={{ p: { xs: 1, md: 2 }, borderRadius: 2, borderColor: theme.palette.divider, backgroundImage: 'none' }}>
           <Typography variant="h6" fontWeight={700} sx={{ px: 1, pt: 1 }}>Department allocation</Typography>
           <Typography variant="caption" color="text.secondary" sx={{ px: 1 }}>Share of team activity</Typography>
-          <Box sx={{ height: 430 }}>
+          <Box sx={{ height: { xs: 330, sm: 430 }, minWidth: 0 }}>
             <ResponsivePie
               data={data}
               margin={{ top: 26, right: 50, bottom: 70, left: 50 }}

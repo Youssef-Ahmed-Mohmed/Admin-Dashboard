@@ -56,7 +56,7 @@ const Invoices = () => {
           <Box><Typography variant="h6" fontWeight={700}>Invoice register</Typography><Typography variant="caption" color="text.secondary">Search and review billing records</Typography></Box>
           <TextField size="small" placeholder="Search invoices" value={search} onChange={(event) => setSearch(event.target.value)} sx={{ width: { xs: '100%', sm: 260 } }} InputProps={{ startAdornment: <SearchOutlinedIcon sx={{ mr: 1, color: 'text.secondary', fontSize: 19 }} /> }} />
         </Stack>
-        <Box sx={{ height: 540, borderTop: `1px solid ${theme.palette.divider}` }}>
+        <Box sx={{ height: { xs: 420, sm: 540 }, minWidth: 0, borderTop: `1px solid ${theme.palette.divider}` }}>
           <DataGrid rows={rows} columns={columns} pageSizeOptions={[10, 25]} initialState={{ pagination: { paginationModel: { pageSize: 10, page: 0 } } }} disableRowSelectionOnClick sx={{ border: 0, '& .MuiDataGrid-columnHeaders': { bgcolor: 'action.hover' }, '& .MuiDataGrid-columnHeaderTitle': { fontSize: 10, fontWeight: 700, letterSpacing: 0.6, color: 'text.secondary' }, '& .MuiDataGrid-cell': { borderColor: theme.palette.divider } }} />
         </Box>
       </Card>

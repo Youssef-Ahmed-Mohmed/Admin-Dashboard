@@ -58,7 +58,7 @@ const BarChartPage = () => {
         <Stack direction="row" justifyContent="space-between" alignItems="flex-start" sx={{ px: 1, pt: 1 }}>
           <Box><Typography variant="h6" fontWeight={700}>Product volume by market</Typography><Typography variant="caption" color="text.secondary">Sample units by product category</Typography></Box>
         </Stack>
-        <Box sx={{ height: { xs: 360, md: 490 }, mt: 1 }}>
+        <Box sx={{ height: { xs: 300, sm: 380, md: 490 }, minWidth: 0, mt: 1 }}>
           <ResponsiveBar
             data={chartData}
             keys={['hot dog', 'burger', 'kebab', 'donut']}

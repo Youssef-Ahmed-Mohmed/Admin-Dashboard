@@ -128,7 +128,7 @@ const Team = () => {
         </Button>
       </Stack>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', lg: 'repeat(4, 1fr)' }, gap: 1.5, mb: 3 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', lg: 'repeat(4, minmax(0, 1fr))' }, gap: { xs: 1, sm: 1.5 }, mb: 3 }}>
         <StatCard label="Total team" value={rows.length} note="People in your workspace" Icon={GroupsOutlinedIcon} accent={theme.palette.primary.main} />
         <StatCard label="Administrators" value={counts.admin} note="Full workspace access" Icon={AdminPanelSettingsOutlinedIcon} accent={theme.palette.info.main} />
         <StatCard label="Managers" value={counts.manager} note="Team management access" Icon={ManageAccountsOutlinedIcon} accent={theme.palette.success.main} />
@@ -158,7 +158,7 @@ const Team = () => {
             </TextField>
           </Stack>
         </Stack>
-        <Box sx={{ height: 500, width: '100%', borderTop: `1px solid ${theme.palette.divider}` }}>
+        <Box sx={{ height: { xs: 420, sm: 500 }, width: '100%', minWidth: 0, borderTop: `1px solid ${theme.palette.divider}` }}>
           <DataGrid
             rows={filteredRows}
             columns={columns}

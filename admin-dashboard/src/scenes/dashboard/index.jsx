@@ -50,7 +50,7 @@ const Dashboard = () => {
         <Chip icon={<TrendingUpRoundedIcon />} label="Live overview" color="success" variant="outlined" size="small" />
       </Stack>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', xl: 'repeat(4, 1fr)' }, gap: 1.5, mb: 2 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', xl: 'repeat(4, minmax(0, 1fr))' }, gap: { xs: 1, sm: 1.5 }, mb: 2 }}>
         {metrics.map(({ label, value, change, Icon, color }) => (
           <Card key={label} variant="outlined" sx={{ borderColor: palette.divider, borderRadius: 2, backgroundImage: 'none' }}>
             <Box sx={{ p: { xs: 1.5, md: 2 }, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 1 }}>
@@ -78,7 +78,7 @@ const Dashboard = () => {
             </Box>
             <Chip label="This year" size="small" variant="outlined" />
           </Stack>
-          <Box sx={{ height: 235, mt: 1.5 }}>
+          <Box sx={{ height: { xs: 190, sm: 235 }, mt: 1.5 }}>
             <svg viewBox="0 0 900 225" width="100%" height="100%" preserveAspectRatio="none" role="img" aria-label="Revenue increased steadily through the year">
               <defs>
                 <linearGradient id="revenue-fill" x1="0" x2="0" y1="0" y2="1">
